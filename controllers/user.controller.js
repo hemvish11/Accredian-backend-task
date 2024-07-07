@@ -1,12 +1,13 @@
 const { addReferralDetails } = require("../DB/prismORM");
 const { sendEmail } = require("../mail/Nodemailer");
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
 
 const test = (req, res) => {
     res.json({
         message: "API is working"
     })
 }
-
 const addUserData = async (req, res) => {
     addReferralDetails(req, res)
         .catch(e => {
@@ -25,4 +26,4 @@ const addUserData = async (req, res) => {
         });
 }
 
-module.exports ={test,addUserData};
+module.exports = { test, addUserData };
